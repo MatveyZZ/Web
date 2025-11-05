@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Jacquard+12&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Jacquard 12", system-ui;
+    background: linear-gradient(135deg, #131313, #000000);
+    color: #fff;
+    min-height: 105vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 800px;
+}
+
+header {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(138, 154, 185, 0.8);
+    background: linear-gradient(90deg, #000000, #ffd166);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+.solar-system-container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+}
+
+.sun {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, #ffd700, #ff8c00, #ff4500);
+    border-radius: 50%;
+    box-shadow: 0 0 40px #ff8c00, 0 0 70px rgba(255, 140, 0, 0.5);
+    z-index: 10;
+    animation: pulse 4s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 40px #ff8c00, 0 0 70px rgba(255, 140, 0, 0.5); }
+    100% { box-shadow: 0 0 50px #ff8c00, 0 0 90px rgba(255, 140, 0, 0.7); }
+}
+
+.orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(255, 255, 255, 0.137);
+    border-radius: 50%;
+}
+
+.planet {
+    position: absolute;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+.mercury {
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #a9a9a9, #7a7a7a);
+    box-shadow: 0 0 6px #a9a9a9;
+}
+
+.venus {
+    width: 14px;
+    height: 14px;
+    background: linear-gradient(135deg, #e39e54, #d18c3c);
+    box-shadow: 0 0 8px #e39e54;
+}
+
+.earth {
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(135deg, #6b93d6, #4a7bc8);
+    box-shadow: 0 0 8px #6b93d6;
+}
+
+.mars {
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, #c1440e, #a8380c);
+    box-shadow: 0 0 6px #c1440e;
+}
+
+.jupiter {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #c19a6b, #b08c5a);
+    box-shadow: 0 0 12px #c19a6b;
+}
+
+.saturn {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, #e4d191, #d9c67a);
+    box-shadow: 0 0 12px #e4d191;
+}
+
+.saturn-ring {
+    position: absolute;
+    width: 45px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) rotate(20deg);
+    z-index: 4;
+}
+
+.uranus {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #d1e7e7, #b8d9d9);
+    box-shadow: 0 0 10px #d1e7e7;
+}
+
+.neptune {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #5b5bff, #4a4ae6);
+    box-shadow: 0 0 10px #5b5bff;
+}
+
+.planet-label {
+    position: absolute;
+    color: white;
+    font-size: 0.7rem;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    text-shadow: 1px 1px 2px black;
+    z-index: 6;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1px 4px;
+    border-radius: 3px;
+    opacity: 0.7;
+}
+
+.time-display {
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 12px;
+    padding: 20px 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgb(0, 0, 0);
+    text-align: center;
+    width: 30%;
+    max-width: 400px;
+}
+
+.date {
+    font-size: 2.3rem;
+    color: #4ecdc4;
+    /* margin-bottom: 8px; */
+}
+
+.time {
+    font-size: 3.2rem;
+    font-weight: bold;
+    color: #e6ba54;
+    text-shadow: 0 0 8px rgba(117, 99, 57, 0.6);
+    letter-spacing: 1px;
+}
+
+@media (max-width: 550px) {
+    .solar-system-container {
+        width: 90vw;
+        height: 90vw;
+    }
+    
+    .time-display {
+        padding: 15px 20px;
+        max-width: 300px;
+    }
+    
+    .time {
+        font-size: 1.8rem;
+    }
+    
+    .date {
+        font-size: 1.1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .time {
+        font-size: 1.5rem;
+    }
+    
+    .date {
+        font-size: 1rem;
+    }
+    
+    h1 {
+        font-size: 1.7rem;
+    }
+}
