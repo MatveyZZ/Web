@@ -1,26 +1,30 @@
 // Автозапуск музыки
 function initMusic() {
     const audio = document.getElementById('background-music');
+    const sun = document.getElementById('sun');
     
     // Устанавливаем громкость
     audio.volume = 0.5;
     
-    // Ждем когда пользователь взаимодействовал со страницей
-    function tryPlayAudio() {
-        audio.play().then(() => {
-            console.log('Музыка запущена');
-        }).catch(error => {
-            console.log('Ожидание взаимодействия пользователя...');
-            // Ждем клика где угодно на странице
-            document.addEventListener('click', function startAudio() {
-                audio.play();
-                document.removeEventListener('click', startAudio);
-            }, { once: true });
-        });
-    }
+    // Делаем солнце кликабельным
+    sun.style.cursor = 'pointer';
     
-    // Пытаемся запустить сразу
-    tryPlayAudio();
+    // Добавляем подсказку при наведении
+    sun.title = 'Нажмите для включения музыки';
+    
+    // Обработчик клика на солнце
+    sun.addEventListener('click', function() {
+        audio.play().then(() => {
+            console.log('Музыка запущена по клику на солнце');
+            // Можно добавить визуальный эффект
+            sun.style.boxShadow = '0 0 60px #ff8c00, 0 0 100px rgba(255, 140, 0, 0.8)';
+            setTimeout(() => {
+                sun.style.boxShadow = '0 0 40px #ff8c00, 0 0 70px rgba(255, 140, 0, 0.5)';
+            }, 1000);
+        }).catch(error => {
+            console.log('Ошибка воспроизведения:', error);
+        });
+    });
     
     // Бесконечное повторение
     audio.loop = true;
