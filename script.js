@@ -5,15 +5,22 @@ function initMusic() {
     // Устанавливаем громкость
     audio.volume = 0.5;
     
-    // Автовоспроизведение с обработкой ошибок
-    audio.play().catch(error => {
-        console.log('Автовоспроизведение заблокировано браузером');
-        // Можно добавить обработку клика для разблокировки
-        document.addEventListener('click', function unlockAudio() {
-            audio.play();
-            document.removeEventListener('click', unlockAudio);
-        }, { once: true });
-    });
+    // Ждем когда пользователь взаимодействовал со страницей
+    function tryPlayAudio() {
+        audio.play().then(() => {
+            console.log('Музыка запущена');
+        }).catch(error => {
+            console.log('Ожидание взаимодействия пользователя...');
+            // Ждем клика где угодно на странице
+            document.addEventListener('click', function startAudio() {
+                audio.play();
+                document.removeEventListener('click', startAudio);
+            }, { once: true });
+        });
+    }
+    
+    // Пытаемся запустить сразу
+    tryPlayAudio();
     
     // Бесконечное повторение
     audio.loop = true;
