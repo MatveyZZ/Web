@@ -140,6 +140,7 @@ function updatePlanets() {
 function init() {
     updateTime();
     updatePlanets();
+    initMusic(); // Добавляем инициализацию музыки
     
     // Обновление каждую секунду
     setInterval(updateTime, 1000);
